@@ -1,0 +1,105 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@section StartScripts
+    {
+    <script src="../Controllers/app.js"></script>
+}
+
+<div class="row clearfix" ng-app="app" ng-controller="ctrl" ng-cloak>
+
+    <div id="divLoading" ng-show="loading" style="font-size:50px;">
+        <div class="loading">
+            Loading .....
+        </div>
+    </div>
+    <div class="col-lg-12 DataPanel">
+        <div class="items-list panel panel-default">
+            <span class="categories list-group-item">
+                <div class="category panel panel-default" ng-repeat="cat in categories">
+                    <div class="category-header panel-heading CatForm{{$index}}" ng-form="CatForm{{$index}}">
+                        <div class="category-name" ng-hide="cat.editMode">
+                            {{cat.name}}
+                            <button type="button" class="btn btn-default" ng-click="cat.editMode=true">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                            </button>
+                        </div>
+                        <div class="category-name" ng-show="cat.editMode">
+                            <input type="text" id="txtCatName" class="form-control required" ng-model="cat.name" ng-required="true">
+                            <button type="button" class=" btn btn-default" ng-click="UpdateCat($index)" ng-disabled="CatForm{{$index}}.$invalid">
+                                <span class="glyphicon glyphicon-ok"></span>
+                            </button>
+                        </div>
+                        <div class="category-total">${{getTotal(cat.id)}}</div>
+                    </div>
+                    <div class="items panel-body">
+                        <span class="item list-group-item itemForm{{itm.id}}" ng-repeat="itm in items" ng-if="itm.cat.id==cat.id" ng-form="itemForm{{itm.id}}">
+
+                            <div class="name">{{itm.name}} </div>
+                            <div class="item-tail">
+                                <div class="value">${{itm.value}}</div>
+                                <button type="button" class="delete-button btn btn-default" ng-click="deleteItem($index)">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </button>
+                            </div>
+                        </span>
+
+                    </div>
+                </div>
+                <div class="category panel panel-default">
+                    <div class="category-header panel-heading CatFormNew" ng-form="CatFormNew">
+                        <div class="category-name">
+                            Add New category:
+                        </div>
+                        <div class="category-name">
+                            <input type="text" id="txtCatName" class="form-control required" ng-model="NewCat.name" ng-required="true">
+                        </div>
+                        <div class="category-total">
+                            <button type="button" class=" btn btn-default" ng-click="AddCat()" ng-disabled="CatFormNew.$invalid">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </span>
+            <span class="total list-group-item">
+                <div>Total</div><div class="total-value">${{getTotal()}}</div>
+            </span>
+        </div>
+        <form name="myForm" class="item-input addnewform">
+            <div class=" form-group">
+                <label class="control-label">Item Name</label>
+                <input placeholder="TV" type="text" id="txtName" name="txtName" class="form-control required" ng-model="NewItem.name" ng-required="true">
+                <span class="error" ng-show="myForm.txtName.$error.required">
+                    required
+                </span>
+            </div>
+            <div class=" form-group">
+                <label class="control-label">Value</label>
+                <input placeholder="$400" type="number" id="txtValue" name="txtValue" ng-model="NewItem.value" class="form-control required" ng-required="true">
+                <span class="error" ng-show="myForm.txtValue.$error.required">
+                    required
+                </span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Category</label>
+                @*<select class="form-control required" ng-model="NewItem.category" name="ddlCategory" ng-required="true">
+                        <option value="">--Select Category--</option>
+                        <option ng-repeat="option in categories" value="{{option}}">{{option.name}}</option>
+                    </select>*@
+                <select class="form-control required" ng-model="NewItem.cat" ng-options="item as item.name for item in categories" name="ddlCategory" ng-required="true">
+                    <option value="null">--Select Category--</option>
+                </select>
+
+                <span class="error" ng-show="myForm.ddlCategory.$error.required">
+                    required
+                </span>
+            </div>
+            <button type="button" class="add-button btn btn-primary" ng-click="SaveItem()" ng-disabled="myForm.$invalid">Add</button>
+        </form>
+
+
+    </div>
+</div>
+

@@ -1,0 +1,100 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
+for details on configuring this project to bundle and minify static web assets. */
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+ 
+/*******************************/
+.required {
+    border-left: 5px #F00 solid;
+    padding-left: 0.5em;
+}
+.error {
+    background-color: #fff6f6;
+    color: red;
+    border: 1px solid #ffd4d4;
+    padding: 8px;
+    border-radius: 4px;
+}
+/**************************/
+.App {
+    text-align: center;
+}
+
+.App-logo {
+    animation: App-logo-spin infinite 20s linear;
+    height: 80px;
+}
+
+.App-header {
+    background-color: #222;
+    height: 150px;
+    padding: 20px;
+    color: white;
+}
+
+.App-title {
+    font-size: 1.5em;
+}
+
+.App-intro {
+    font-size: large;
+}
+
+@keyframes App-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.category-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.category-total {
+    margin-right: 20px;
+}
+.item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.item-tail {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.value {
+    margin-right: 20px;
+}
+.item-input {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.form-group {
+    margin-bottom: 0;
+    width: 30%;
+}
+
+.total {
+    display: flex;
+    justify-content: space-between;
+}

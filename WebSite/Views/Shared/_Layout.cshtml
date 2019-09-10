@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WebSite</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/site.css">
+    <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css">
+
+    <script type="text/javascript" src="@Url.Content("~/lib/angular/angular.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/lib/jquery/dist/jquery.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/lib/bootstrap/dist/js/bootstrap.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/lib/sweetalert2/sweetalert2.min.js")"></script>
+    <link rel="stylesheet" href="@Url.Content("~/lib/sweetalert2/sweetalert2.min.css")">
+    <script src="@Url.Content("~/lib/loadingoverlay.min.js")"></script>
+
+    <script type="text/javascript" src="@Url.Content("~/js/site.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/js/MyScript.js")"></script>
+
+    @RenderSection("StartScripts", required: false)
+</head>
+<body>
+     
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <strong>
+                Swagger Like -
+            </strong>
+             click <a href="swagger">here</a>
+                   <p>
+                       <strong>
+                           in order to run the application you must built the database first
+                       </strong> 
+                       <div>
+                           it's EF/Code first - in Package manager Console write the following:
+                           <ul>
+                               <li>Add-Migration Initial</li>
+                               <li>Update-database</li>
+                           </ul>
+                           
+                           
+                       </div>
+
+                   </p>
+
+        </footer>
+    </div>
+     
+    
+
+    @RenderSection("EndScripts", required: false)
+</body>
+</html>
